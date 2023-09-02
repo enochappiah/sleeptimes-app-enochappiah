@@ -26,7 +26,7 @@ function calcBedTimes() {
   //extract desired wake up time from dropdown form  
   const wakeUpHour = document.getElementById("hour-dropdown").value;
   const wakeUpMinutes = document.getElementById("minute-dropdown").value;
-  //const wakeUpDay = document.getElementById("ampm-dropdown").value;
+  const wakeUpDay = document.getElementById("ampm-dropdown").value;
 //   if (wakeUpHour === "12") {
 //     wakeUpHour = 0;
 //   }
@@ -34,7 +34,7 @@ function calcBedTimes() {
   
   //create new Date object for wakeuptime with accounted fall asleep time
   const wakeUpTime = new Date();
-  if (wakeUpHour === "12") {
+  if (wakeUpHour === "12" && wakeUpDay === "AM") {
     wakeUpTime.setHours(0);
   } else {
     wakeUpTime.setHours(wakeUpHour);
