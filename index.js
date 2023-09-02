@@ -32,14 +32,14 @@ function calcBedTimes() {
   const wakeUpTime = new Date();
   wakeUpTime.setHours(wakeUpHour);
   wakeUpTime.setMinutes(wakeUpMinutes - 14);
-
+  
 
   const goToBedTime = new Date(wakeUpTime);
   bedtimeHoursDiv.innerHTML = "";
   //code prints latest time first, figure out how to reverse the list
   for (let i = 1; i <= 6; i++) {
     goToBedTime.setMinutes(goToBedTime.getMinutes() - 90);
-    const wakeUpTimeString = goToBedTime.toLocaleTimeString("en-US", {
+    const goToBedTimeString = goToBedTime.toLocaleTimeString("en-US", {
       timeStyle: "short",
     });
 
@@ -47,8 +47,8 @@ function calcBedTimes() {
     const cycleDiv = document.createElement("div");
     cycleDiv.classList.add("cycle");
     cycleDiv.setAttribute("id", `cycle-${i}`);
-    cycleDiv.textContent = wakeUpTimeString;
-    bedtimeHoursDiv.appendChild(cycleDiv);
+    cycleDiv.textContent = goToBedTimeString;
+    bedtimeHoursDiv.prepend(cycleDiv); //prepend here instead of appendChild to "reverse" list
   }
 
   //TODO review this
